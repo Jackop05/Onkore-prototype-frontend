@@ -7,7 +7,6 @@ import HoverLetters from "../../logic/HoverLetters";
 const Offers = () => {
   const apiUrl = import.meta.env.VITE_BACKEND_API_URL;
 
-
   const [subjectCoursesData, setSubjectCoursesData] = useState(null);
   const [error, setError] = useState(null);
   

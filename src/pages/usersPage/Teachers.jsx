@@ -4,12 +4,14 @@ import HoverLetters from "../../logic/HoverLetters";
 
 
 const Teachers = () => {
+  const apiUrl = import.meta.env.VITE_BACKEND_API_URL;
+
   const [teachers, setTeachers] = useState([]);
 
 
   // UseEffect fetching all admin data
   useEffect(() => {
-    fetch("http://localhost:2020/api/admin/get-all-admins-data")
+    fetch(`${apiUrl}/api/admin/get-all-admins-data`)
       .then((response) => response.json())
       .then((data) => setTeachers(data))
       .catch((error) => console.error("Error fetching teachers:", error));

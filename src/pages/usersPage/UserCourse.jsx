@@ -6,6 +6,8 @@ import { FaHome } from "react-icons/fa";
  * Displays a single user course (subject, description, lessonDates, materials).
  */
 const UserCourse = () => {
+  const apiUrl = import.meta.env.VITE_BACKEND_API_URL;
+
   const { courseId, username } = useParams();
   const [courseData, setCourseData] = useState(null);
 
@@ -13,7 +15,7 @@ const UserCourse = () => {
     const fetchCourseData = async () => {
       try {
         const response = await fetch(
-          `http://localhost:2020/api/user/get-single-user-current-course?courseId=${courseId}`,
+          `${apiUrl}/api/user/get-single-user-current-course?courseId=${courseId}`,
           {
             method: "GET",
             credentials: "include",

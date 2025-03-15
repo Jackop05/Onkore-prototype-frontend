@@ -7,6 +7,8 @@ import "react-datepicker/dist/react-datepicker.css";
 
 
 const BuyCourse = () => {
+  const apiUrl = import.meta.env.VITE_BACKEND_API_URL;
+
   const navigate = useNavigate();
   const { courseId, username } = useParams();
 
@@ -28,7 +30,7 @@ const BuyCourse = () => {
   useEffect(() => {
     if (!selectedTime) return;
     fetch(
-      `http://localhost:2020/api/subject-courses/available-days?courseId=${courseId}&hour=${selectedTime.trim()}`
+      `${apiUrl}/api/subject-courses/available-days?courseId=${courseId}&hour=${selectedTime.trim()}`
     )
       .then((response) => response.json())
       .then((data) => setAvailableDays(data))
@@ -46,7 +48,7 @@ const BuyCourse = () => {
     setLoadingPromoCode(true);
     const timer = setTimeout(() => {
       fetch(
-        `http://localhost:2020/api/discount-code/check-promo-code?email=Tester&promoCode=${promoCode}&subjectId=${courseId}`
+        `${apiUrl}/api/discount-code/check-promo-code?email=Tester&promoCode=${promoCode}&subjectId=${courseId}`
       )
         .then((response) => {
           setLoadingPromoCode(false);
@@ -114,7 +116,7 @@ const BuyCourse = () => {
 
   console.log(JSON.stringify(courseData));
 
-  fetch("http://localhost:2020/api/user/post-course", {
+  fetch(`${apiUrl}/api/user/post-course`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

@@ -11,6 +11,8 @@ import MyCourses from './usersPage/MyCourses';
 
 
 const UsersPage = () => {
+  const apiUrl = import.meta.env.VITE_BACKEND_API_URL;
+
   const navigate = useNavigate();
 
   const [userData, setUserData] = useState(null);
@@ -20,14 +22,14 @@ const UsersPage = () => {
   const fetchUserData = async () => {
     console.log('Fetching user data');
     try {
-      const response = await fetch('http://localhost:2020/api/user/get-user-data', {
+      const response = await fetch(`${apiUrl}/api/user/get-user-data`, {
           method: 'GET',
           credentials: 'include', // ✅ Allows cookies to be sent
           headers: { 'Content-Type': 'application/json' },
       });
 
       if (!response.ok) {
-        navigate("/login");
+        navigate("/logowanie");
         console.log(`HTTP error! Status: ${response.status}`);
       }
 
@@ -39,7 +41,7 @@ const UsersPage = () => {
     } 
 
     try {
-      const response = await fetch('http://localhost:2020/api/user/get-user-current-courses', {
+      const response = await fetch(`${apiUrl}/api/user/get-user-current-courses`, {
           method: 'GET',
           credentials: 'include', 
           headers: {  'Content-Type': 'application/json' },

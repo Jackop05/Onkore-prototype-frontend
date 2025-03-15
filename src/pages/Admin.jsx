@@ -5,6 +5,8 @@ import HoverLetters from "../logic/HoverLetters";
 
 
 const Admin = () => {
+  const apiUrl = import.meta.env.VITE_BACKEND_API_URL;
+
     const navigate = useNavigate();
     const [adminData, setAdminData] = useState(null);
     const [availability, setAvailability] = useState([]);
@@ -21,7 +23,7 @@ const Admin = () => {
     // Function fetches for admin data 
     const fetchAdminData = async () => {
         try {
-            const response = await fetch("http://localhost:2020/api/admin/get-admin-data", {
+            const response = await fetch(`${apiUrl}/api/admin/get-admin-data`, {
                 method: "GET",
                 credentials: "include",
                 headers: { "Content-Type": "application/json" },
@@ -49,7 +51,7 @@ const Admin = () => {
     // Function fetches for admin courses data
     const fetchAdminCourses = async () => {
       try {
-        const response = await fetch("http://localhost:2020/api/admin/get-admin-current-courses", {
+        const response = await fetch(`${apiUrl}/api/admin/get-admin-current-courses`, {
           method: "GET",
           credentials: "include",
           headers: { "Content-Type": "application/json" },
@@ -76,7 +78,7 @@ const Admin = () => {
     // Function fetches for admin availability
     const fetchAvailability = async (adminId) => {
         try {
-            const response = await fetch(`http://localhost:2020/api/admin/get-availability?adminId=${adminId}`, {
+            const response = await fetch(`${apiUrl}/api/admin/get-availability?adminId=${adminId}`, {
                 method: "GET",
                 credentials: "include",
                 headers: { "Content-Type": "application/json" },
@@ -105,7 +107,7 @@ const Admin = () => {
         }
 
         try {
-            const response = await fetch("http://localhost:2020/api/admin/post-availability", {
+            const response = await fetch(`${apiUrl}/api/admin/post-availability`, {
                 method: "PUT",
                 credentials: "include",
                 headers: { "Content-Type": "application/json" },
@@ -130,7 +132,7 @@ const Admin = () => {
     // Function deletes availability in database
     const handleDeleteAvailability = async (availabilityId) => {
         try {
-            const response = await fetch("http://localhost:2020/api/admin/delete-availability", {
+            const response = await fetch(`${apiUrl}/api/admin/delete-availability`, {
                 method: "DELETE",
                 credentials: "include",
                 headers: { "Content-Type": "application/json" },
@@ -150,7 +152,7 @@ const Admin = () => {
     const sendMeetingLink = async (courseId, lessonId) => {
       const link = meetingLinks[lessonId] || ""; 
       try {
-        const response = await fetch("http://localhost:2020/api/admin/update-lesson-link", {
+        const response = await fetch(`${apiUrl}/api/admin/update-lesson-link`, {
           method: "PUT",
           credentials: "include",
           headers: { "Content-Type": "application/json" },
@@ -169,7 +171,7 @@ const Admin = () => {
     // Function cancels meeting
     const cancelMeeting = async (courseId, lessonId) => {
       try {
-        const response = await fetch("http://localhost:2020/api/admin/cancel-lesson", {
+        const response = await fetch(`${apiUrl}/api/admin/cancel-lesson`, {
           method: "DELETE",
           credentials: "include",
           headers: { "Content-Type": "application/json" },
@@ -193,7 +195,7 @@ const Admin = () => {
       }
       
       try {
-        const response = await fetch("http://localhost:2020/api/admin/update-lesson-status", {
+        const response = await fetch(`${apiUrl}/api/admin/update-lesson-status`, {
           method: "PUT",
           credentials: "include",
           headers: { "Content-Type": "application/json" },
@@ -216,7 +218,7 @@ const Admin = () => {
         {/* Navbar */}
         <div className="text-slate-900 w-screen px-6 md:px-12 pt-8 pb-6 flex gap-8 justify-between shadow-xl rounded-b-xl bg-white fixed z-50 ">
             <div className="items-center self-center">
-                <img src="../images/logoOnkoreIcon.png" alt="onkore" className="h-[35px] md:h-[40px] " />
+                <img src="../images/onkoreLogoIcon.png" alt="onkore" className="h-[35px] md:h-[40px] " />
             </div>
             <div className="flex  flex-row justify-center gap-16 text-xl md:text-2xl font-semibold items-center tracking-wide self-center">
                 <Link to="/rejestracja-tutor" className="cursor-pointer hover:drop-shadow-sm hover:text-neonblue transition-all duration-150 ">

@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { FaHome } from "react-icons/fa"; 
 
 const RegisterTeacher = () => {
+  const apiUrl = import.meta.env.VITE_BACKEND_API_URL;
+
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -24,7 +26,7 @@ const RegisterTeacher = () => {
     const teacherData = { username, email, password, contact, description };
 
     try {
-      const response = await fetch(`${process.env.BACKEND_API_URL}/api/admin/register-admin`, {
+      const response = await fetch(`${apiUrl}/api/admin/register-admin`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(teacherData)

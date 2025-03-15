@@ -9,6 +9,8 @@ import { FaHome, FaTimes  } from "react-icons/fa";
  * - Displays a list of PDFs & allows uploading more
  */
 const TeachersCourse = () => {
+  const apiUrl = import.meta.env.VITE_BACKEND_API_URL;
+
   const { adminname, courseId } = useParams();
   const [lessonDates, setLessonDates] = useState([]);
   const [pdfs, setPdfs] = useState([]);
@@ -32,7 +34,7 @@ const TeachersCourse = () => {
   const fetchCourseData = async () => {
     try {
       const response = await fetch(
-        `${process.env.BACKEND_API_URL}/api/user/get-single-user-current-course?courseId=${courseId}`,
+        `${apiUrl}/api/user/get-single-user-current-course?courseId=${courseId}`,
         {
           method: "GET",
           credentials: "include",
@@ -76,7 +78,7 @@ const TeachersCourse = () => {
     try {
       // Adjust the URL to match your controller path
       const response = await fetch(
-        `${process.env.BACKEND_API_URL}/api/materials/${courseId}/materials`,
+        `${apiUrl}/api/materials/${courseId}/materials`,
         {
           method: "PUT",
           body: formData,
@@ -106,7 +108,7 @@ const TeachersCourse = () => {
     if (!isConfirmed) return;
 
     try {
-      const response = await fetch(`${process.env.BACKEND_API_URL}/api/admin/cancel-lesson`, {
+      const response = await fetch(`${apiUrl}/api/admin/cancel-lesson`, {
         method: "DELETE",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
@@ -138,7 +140,7 @@ const TeachersCourse = () => {
       // @DeleteMapping("/{courseId}/materials/{materialId}")
       // or /api/materials/{courseId}/materials/{materialId}?deleteFile=true
       const response = await fetch(
-        `${process.env.BACKEND_API_URL}/api/materials/${courseId}/materials/${pdfId}?deleteFile=true`,
+        `${apiUrl}/api/materials/${courseId}/materials/${pdfId}?deleteFile=true`,
         {
           method: "DELETE",
           credentials: "include",

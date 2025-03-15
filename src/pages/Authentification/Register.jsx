@@ -5,6 +5,8 @@ import { FaHome } from "react-icons/fa";
 
 
 const Register = () => {
+  const apiUrl = import.meta.env.VITE_BACKEND_API_URL;
+
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
@@ -26,7 +28,7 @@ const Register = () => {
     const userData = { username, email, password };
 
     try {
-      const response = await fetch(`${process.env.BACKEND_API_URL}/api/user/register-user`, {
+      const response = await fetch(`${apiUrl}/api/user/register-user`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

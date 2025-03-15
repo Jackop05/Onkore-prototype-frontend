@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 const ResetPassword = () => {
+  const apiUrl = import.meta.env.VITE_BACKEND_API_URL;
+
   const navigate = useNavigate();
   const { token } = useParams();
 
@@ -29,7 +31,7 @@ const ResetPassword = () => {
     const resetData = { token, newPassword, email };
 
     try {
-      const response = await fetch(`${process.env.BACKEND_API_URL}/api/admin/reset-password`, {
+      const response = await fetch(`${apiUrl}/api/admin/reset-password`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

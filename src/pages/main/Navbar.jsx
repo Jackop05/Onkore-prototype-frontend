@@ -24,7 +24,7 @@ const Navbar = () => {
       <div className="flex justify-between items-center px-6 md:px-12 py-4 h-[80px]">
         {/* Logo */}
         <div className="flex items-center">
-          <img src="/images/logoOnkoreIcon.png" alt="onkore" className="h-[36px] md:h-[42px]" />
+          <img src="/images/onkoreLogoIcon.png" alt="onkore" className="h-[36px] md:h-[42px]" />
         </div>
 
         {/* Navbar links */}

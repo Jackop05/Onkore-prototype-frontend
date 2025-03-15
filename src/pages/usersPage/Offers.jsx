@@ -5,6 +5,8 @@ import HoverLetters from "../../logic/HoverLetters";
 
 
 const Offers = ({ userData }) => {
+  const apiUrl = import.meta.env.VITE_BACKEND_API_URL;
+
   const [subjectCoursesData, setSubjectCoursesData] = useState(null);
   const [error, setError] = useState(null);
 
@@ -27,7 +29,7 @@ const Offers = ({ userData }) => {
 
   // UseEffect for fetching all subject courses data 
   useEffect(() => {
-    fetch("http://localhost:2020/api/subject-courses/get-subject-courses")
+    fetch(`${apiUrl}/api/subject-courses/get-subject-courses`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);

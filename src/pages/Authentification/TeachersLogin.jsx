@@ -5,6 +5,8 @@ import { FaHome } from "react-icons/fa";
 
 
 const TeachersLogin = () => {
+  const apiUrl = import.meta.env.VITE_BACKEND_API_URL;
+
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,7 +31,7 @@ const TeachersLogin = () => {
     const userData = { email };
   
     try {
-      const response = await fetch(`${process.env.BACKEND_API_URL}/api/admin/create-reset-password-token`, {
+      const response = await fetch(`${apiUrl}/api/admin/create-reset-password-token`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

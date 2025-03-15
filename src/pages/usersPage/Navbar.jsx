@@ -6,8 +6,9 @@ import ScrollToSection from "../../logic/ScrollToSection";
 
 
 const Navbar = () => {
-  const navigate = useNavigate();
+  const apiUrl = import.meta.env.VITE_BACKEND_API_URL;
 
+  const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
 
@@ -24,7 +25,7 @@ const Navbar = () => {
   // Function that handles user's logout
   const handleLogout = async () => {
     try {
-      const response = await fetch("http://localhost:2020/api/user/logout-user", {
+      const response = await fetch(`${apiUrl}/api/user/logout-user`, {
         method: "POST",
         credentials: "include",
       });
@@ -46,7 +47,7 @@ const Navbar = () => {
 
         {/* Logo */}
         <img
-          src="../images/logoOnkoreIcon.png"
+          src="../images/onkoreLogoIcon.png"
           alt="Onkore"
           className="h-[42px] cursor-pointer"
           onClick={() => navigate("/")}

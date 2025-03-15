@@ -5,6 +5,8 @@ import { FaHome } from "react-icons/fa";
 
 
 const Login = () => {
+  const apiUrl = import.meta.env.VITE_BACKEND_API_URL;
+
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -30,7 +32,7 @@ const Login = () => {
     const userData = { email };
   
     try {
-      const response = await fetch(`${process.env.BACKEND_API_URL}/api/user/create-reset-password-token`, {
+      const response = await fetch(`${apiUrl}/api/user/create-reset-password-token`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -62,9 +64,9 @@ const Login = () => {
     }
 
     const userData = { email, password };
-
+    
     try {
-      const response = await fetch(`${process.env.BACKEND_API_URL}/api/user/login-user`, {
+      const response = await fetch(`${apiUrl}/api/user/login-user`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

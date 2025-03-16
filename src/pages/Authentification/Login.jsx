@@ -76,7 +76,7 @@ const Login = () => {
       });
 
       const result = await response.json();
-      console.log(result.cookieSent);
+      console.log("new cookie: " + result.cookieSent);
       if (!response.ok) {
         setEmail("");
         setPassword("");

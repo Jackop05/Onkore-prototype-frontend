@@ -76,6 +76,7 @@ const Login = () => {
       });
 
       const result = await response.json();
+      console.log(result.cookieSent);
       if (!response.ok) {
         setEmail("");
         setPassword("");

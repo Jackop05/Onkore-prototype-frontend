@@ -64,6 +64,7 @@ const Login = () => {
     }
 
     const userData = { email, password };
+    console.log("update here");
     
     try {
       const response = await fetch(`${apiUrl}/api/user/login-user`, {

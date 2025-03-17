@@ -12,7 +12,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
 
-  // Togles menu open and close 
+  // Togles menu open and close
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };

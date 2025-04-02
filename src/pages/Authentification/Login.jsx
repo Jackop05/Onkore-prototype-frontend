@@ -81,14 +81,14 @@ const Login = () => {
       if (!response.ok) {
         setEmail("");
         setPassword("");
-        setError(result.error || "Something went wrong...");
+        setError("Niepoprawny email lub hasło");
         return;
       }
 
       alert(result.message);
       navigate("/user/logged-user");
     } catch (error) {
-      setError("An unexpected error occurred.");
+      setError("Niepoprawny email lub hasło");
     }
   };
 
